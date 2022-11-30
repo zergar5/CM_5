@@ -9,7 +9,8 @@ public class CourseHolder
         var stringBuilder = new StringBuilder();
         stringBuilder.Append($"\rIteration: {iteration}, ");
         stringBuilder.Append($"Eigenvalue: {eigenvalue}".Replace(",", "."));
-        stringBuilder.Append($", Residual: {residual}                     ");
+        stringBuilder.Append(", ");
+        stringBuilder.Append($"Residual: {residual}                     ".Replace(",", "."));
         Console.Write(stringBuilder);
     }
 }

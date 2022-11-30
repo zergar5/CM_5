@@ -1,2 +1,2 @@
-Max eigenvalue: 1.67319084944885e+01
-Min eigenvalue: 4.89880628329472e+00
+Max eigenvalue: 1.85446425584073e+01
+Min eigenvalue: 8.59182514960335e-02

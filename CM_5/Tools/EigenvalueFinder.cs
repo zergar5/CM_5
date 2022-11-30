@@ -10,15 +10,14 @@ public class EigenvalueFinder
         var nextVector = Calculator.MultiplyMatrixOnVector(matrix, prevVector);
         var eigenvalue = nextVector.CalcNorm() / prevVector.CalcNorm();
         var residual = 1.0;
-        prevVector = nextVector;
         CourseHolder.GetInfo(1, eigenvalue, residual);
         for (var i = 2; i <= maxIter && residual > eps; i++)
         {
+            prevVector = nextVector;
             var prevEigenvalue = eigenvalue;
             nextVector = Calculator.MultiplyMatrixOnVector(matrix, prevVector);
             eigenvalue = nextVector.CalcNorm() / prevVector.CalcNorm();
             residual = Math.Abs((eigenvalue - prevEigenvalue) / eigenvalue);
-            prevVector = nextVector;
             CourseHolder.GetInfo(i, eigenvalue, residual);
         }
 
@@ -33,15 +32,15 @@ public class EigenvalueFinder
         var nextVector = SLAESolver.SolveSLAE(matrix, prevVector);
         var eigenvalue = nextVector.CalcNorm() / prevVector.CalcNorm();
         var residual = 1.0;
-        prevVector = nextVector;
+
         CourseHolder.GetInfo(1, 1 / eigenvalue, residual);
         for (var i = 2; i <= maxIter && residual > eps; i++)
         {
+            prevVector = nextVector;
             var prevEigenvalue = eigenvalue;
             nextVector = SLAESolver.SolveSLAE(matrix, prevVector);
             eigenvalue = nextVector.CalcNorm() / prevVector.CalcNorm();
             residual = Math.Abs((eigenvalue - prevEigenvalue) / eigenvalue);
-            prevVector = nextVector;
             CourseHolder.GetInfo(i, 1 / eigenvalue, residual);
         }
 

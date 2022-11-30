@@ -2,19 +2,17 @@
 using CM_5.Models;
 using CM_5.Tools;
 
-var matrixI = new MatrixIO("../CM_5/Input/");
-var vectorI = new VectorIO("../CM_5/Input/");
+var matrixI = new MatrixIO("../CM_5/Input/Diagonal/");
+var vectorI = new VectorIO("../CM_5/Input/Diagonal/");
 var parametersI = new ParametersIO("../CM_5/Input/");
 var eigenvaluesO = new EigenvaluesIO("../CM_5/Output/");
 
 var startVector = vectorI.Read("vector.txt");
 
-var matrix = matrixI.Read("matrix.txt");
+var matrix = matrixI.Read("matrixB.txt");
 
 var hilbertMatrix = new Matrix();
 hilbertMatrix.GenerateHilbert(startVector.Count);
-
-var hilbertF = Calculator.MultiplyMatrixOnVector(hilbertMatrix, startVector);
 
 var (eps, maxIter) = parametersI.ReadMethodParameters("parameters.txt");
 

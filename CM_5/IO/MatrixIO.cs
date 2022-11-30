@@ -14,7 +14,7 @@ public class MatrixIO
     {
         using var streamReader = new StreamReader(_path + fileName);
 
-        var matrixValues = streamReader.ReadToEnd().Split('\n');
+        var matrixValues = streamReader.ReadToEnd().Replace('.', ',').Split('\n');
         var inputMatrix = new double[matrixValues.Length, matrixValues[0].Split(' ').Length];
         for (var i = 0; i < inputMatrix.GetLength(0); i++)
         {
